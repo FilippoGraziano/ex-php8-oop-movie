@@ -14,6 +14,10 @@ class Movie {
 
     }
 
+    function getYear() {
+        return $this -> year;
+    }
+
 };
 
 $pulpFiction = new Movie("Pulp Fiction", 1994, "Quentin Tarantino");
@@ -35,6 +39,13 @@ var_dump($godfather);
 
 <body>
     <h1>Movies</h1>
+
+    <?php
+    
+    echo "Publication year of " . $godfather->title . " is " . $godfather->getYear();
+
+    ?>
+
 </body>
 
 </html>
