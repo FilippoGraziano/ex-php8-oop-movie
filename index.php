@@ -41,11 +41,18 @@ class Genres
 
 $pulpFiction = new Movie("Pulp Fiction", 1994, new Genres(["Crime", "Thriller"]), "Quentin Tarantino");
 $pulpFictionGenres = $pulpFiction->genresNames->getGenresNames();
-$godfather = new Movie("The Godfather", 1972, new Genres(["Drammatic", "Crime"]), "Francis Ford Coppola");
+
+$godfather = new Movie("The Godfather", 1972, new Genres(["Drama", "Crime"]), "Francis Ford Coppola");
 $godfatherGenres = $godfather->genresNames->getGenresNames();
 
-var_dump($pulpFiction);
-var_dump($godfather);
+$inception = new Movie("Inception", 2010, new Genres(["Sci-Fi", "Action"]), "Christopher Nolan");
+$inceptionGenres = $inception->genresNames->getGenresNames();
+
+$laVitaBella = new Movie("La vita è bella", 1997, new Genres(["Comedy-Drama", "Historical"]), "Roberto Benigni");
+$laVitaBellaGenres = $laVitaBella->genresNames->getGenresNames();
+
+$shining = new Movie("The Shining", 1980, new Genres(["Horro", "Psychological Thriller"]), "Stanley Kubrick");
+$shiningGenres = $shining->genresNames->getGenresNames();
 
 ?>
 
