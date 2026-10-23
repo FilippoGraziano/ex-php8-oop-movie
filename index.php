@@ -1,43 +1,48 @@
 <?php
 
-class Movie {
+class Movie
+{
 
     public string $title;
     public int $year;
-    public Genre $genreName;
+    public Genres $genresNames;
     public string $director;
 
-    function __construct(string $_title, int $_year, Genre $_genreName, string $_director) {
+    function __construct(string $_title, int $_year, Genres $_genresNames, string $_director)
+    {
 
         $this->title = $_title;
         $this->year = $_year;
-        $this->genreName = $_genreName;
+        $this->genresNames = $_genresNames;
         $this->director = $_director;
-
     }
 
-    function getYear() {
-        return $this -> year;
+    function getYear()
+    {
+        return $this->year;
     }
-
 };
 
-class Genre {
+class Genres
+{
 
-    protected string $name;
+    protected array $names;
 
-    function __construct(string $_name) {
-        $this -> name = $_name;
+    function __construct(array $_names)
+    {
+        $this->names = $_names;
     }
 
-    function getGenreName() {
-        return $this -> name;
+    function getGenresNames()
+    {
+        return $this->names;
     }
-
 }
 
-$pulpFiction = new Movie("Pulp Fiction", 1994, new Genre("Crime"),"Quentin Tarantino");
-$godfather = new Movie("The Godfather", 1972, new Genre("Drammatic"),"Francis Ford Coppola");
+$pulpFiction = new Movie("Pulp Fiction", 1994, new Genres(["Crime", "Thriller"]), "Quentin Tarantino");
+$pulpFictionGenres = $pulpFiction->genresNames->getGenresNames();
+$godfather = new Movie("The Godfather", 1972, new Genres(["Drammatic", "Crime"]), "Francis Ford Coppola");
+$godfatherGenres = $godfather->genresNames->getGenresNames();
 
 var_dump($pulpFiction);
 var_dump($godfather);
@@ -56,11 +61,33 @@ var_dump($godfather);
 <body>
     <h1>Movies</h1>
 
+    <hr>
+
     <?php
-    
-    echo "Publication year of " . $godfather->title . " is " . $godfather->getYear() . ". And the genre is " . $godfather->genreName->getGenreName();
-    echo "</br>";
-    echo "Publication year of " . $pulpFiction->title . " is " . $pulpFiction->getYear() . ". And the genre is " . $pulpFiction->genreName->getGenreName();
+
+    echo "Movie: " . $godfather->title . " </br> Year: " . $godfather->getYear() . ". </br>";
+    echo "Genres: ";
+    foreach ($godfatherGenres as $key => $genre) {
+
+        $last_key = array_key_last($godfatherGenres);
+
+        if ($key == $last_key) {
+            echo $genre;
+        } else echo "$genre, ";
+    }
+
+    echo "<hr>";
+
+    echo "Movie: " . $pulpFiction->title . " </br> Year: " . $pulpFiction->getYear() . ". </br>";
+    echo "Genres: ";
+    foreach ($pulpFictionGenres as $key => $genre) {
+
+        $last_key = array_key_last($pulpFictionGenres);
+
+        if ($key == $last_key) {
+            echo $genre;
+        } else echo "$genre, ";
+    }
 
     ?>
 
