@@ -6,13 +6,16 @@ class Movie {
     public int $year;
     public Genres $genresNames;
     public string $director;
+    use Money;
 
-    function __construct(string $_title, int $_year, Genres $_genresNames, string $_director) {
+    function __construct(string $_title, int $_year, Genres $_genresNames, string $_director, string $_budget, string $_worldWideBoxOffice) {
 
         $this->title = $_title;
         $this->year = $_year;
         $this->genresNames = $_genresNames;
         $this->director = $_director;
+        $this->setBudget($_budget);
+        $this->setWorldWide($_worldWideBoxOffice);
     }
 
     function getYear() {
@@ -37,20 +40,45 @@ class Genres {
     }
 }
 
-$pulpFiction = new Movie("Pulp Fiction", 1994, new Genres(["Crime", "Thriller"]), "Quentin Tarantino");
-$pulpFictionGenres = $pulpFiction->genresNames->getGenresNames();
+trait Money {
 
-$godfather = new Movie("The Godfather", 1972, new Genres(["Drama", "Crime"]), "Francis Ford Coppola");
+    protected string $budget;
+    protected string $worldWideBoxOffice;
+
+    function setBudget( string $_budget) {
+        return $this -> budget = $_budget;
+    }
+
+    function setWorldWide( string $_worldWideBoxOffice) {
+        return $this -> worldWideBoxOffice = $_worldWideBoxOffice;
+    }
+
+    function getBudget() {
+        return $this -> budget;
+    }
+
+    function getWorldWide() {
+        return $this -> worldWideBoxOffice;
+    }
+
+}
+
+$godfather = new Movie("The Godfather", 1972, new Genres(["Drama", "Crime"]), "Francis Ford Coppola", "$6,000,000", "$250,000,000+");
 $godfatherGenres = $godfather->genresNames->getGenresNames();
 
-$inception = new Movie("Inception", 2010, new Genres(["Sci-Fi", "Action"]), "Christopher Nolan");
-$inceptionGenres = $inception->genresNames->getGenresNames();
+$pulpFiction = new Movie("Pulp Fiction", 1994, new Genres(["Crime", "Thriller"]), "Quentin Tarantino", "$8,500,000", "$213,900,000");
+$pulpFictionGenres = $pulpFiction->genresNames->getGenresNames();
 
-$laVitaBella = new Movie("La vita è bella", 1997, new Genres(["Comedy-Drama", "Historical"]), "Roberto Benigni");
-$laVitaBellaGenres = $laVitaBella->genresNames->getGenresNames();
+// $inception = new Movie("Inception", 2010, new Genres(["Sci-Fi", "Action"]), "Christopher Nolan");
+// $inceptionGenres = $inception->genresNames->getGenresNames();
 
-$shining = new Movie("The Shining", 1980, new Genres(["Horro", "Psychological Thriller"]), "Stanley Kubrick");
-$shiningGenres = $shining->genresNames->getGenresNames();
+// $lifeIsBeutiful = new Movie("La vita è bella", 1997, new Genres(["Comedy-Drama", "Historical"]), "Roberto Benigni");
+// $lifeIsBeutifulGenres = $lifeIsBeutiful->genresNames->getGenresNames();
+
+// $shining = new Movie("The Shining", 1980, new Genres(["Horro", "Psychological Thriller"]), "Stanley Kubrick");
+// $shiningGenres = $shining->genresNames->getGenresNames();
+
+var_dump($godfather)
 
 ?>
 
