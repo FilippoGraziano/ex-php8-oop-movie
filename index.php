@@ -1,15 +1,13 @@
 <?php
 
-class Movie
-{
+class Movie {
 
     public string $title;
     public int $year;
     public Genres $genresNames;
     public string $director;
 
-    function __construct(string $_title, int $_year, Genres $_genresNames, string $_director)
-    {
+    function __construct(string $_title, int $_year, Genres $_genresNames, string $_director) {
 
         $this->title = $_title;
         $this->year = $_year;
@@ -17,24 +15,24 @@ class Movie
         $this->director = $_director;
     }
 
-    function getYear()
-    {
+    function getYear() {
         return $this->year;
     }
 };
 
-class Genres
-{
+class Genres {
 
     protected array $names;
 
-    function __construct(array $_names)
-    {
+    function __construct(array $_names) {
         $this->names = $_names;
     }
 
-    function getGenresNames()
-    {
+    function setGenresNames(string $name) {
+        return array_push($this->names, $name);
+    }
+
+    function getGenresNames() {
         return $this->names;
     }
 }
