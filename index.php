@@ -2,7 +2,10 @@
 
 require_once "./db.php";
 
-var_dump($movies);
+// il commento qui sotto serve a dire a vs code che la variabile movie esiste perchè mi da un errore anche se il file è collegato bene
+/** @var Movie[] $movies */ // <-- Questo dice a VS Code: "$movies esiste ed è un array di oggetti Movie"
+
+// var_dump($movies);
 
 ?>
 
@@ -20,33 +23,41 @@ var_dump($movies);
 
     <hr>
 
-    <?php
+    <ul>
+        <?php
 
-    // echo "Movie: " . $godfather->title . " </br> Year: " . $godfather->getYear() . ". </br>";
-    // echo "Genres: ";
-    // foreach ($godfatherGenres as $key => $genre) {
+            foreach ($movies as $movieKey => $movie) {
 
-    //     $last_key = array_key_last($godfatherGenres);
+                $movieLastKey = array_key_last($movies);
 
-    //     if ($key == $last_key) {
-    //         echo $genre;
-    //     } else echo "$genre, ";
-    // }
+                $genres = $movie->genresNames->getGenresNames();
 
-    // echo "<hr>";
+                echo "<li>";
 
-    // echo "Movie: " . $pulpFiction->title . " </br> Year: " . $pulpFiction->getYear() . ". </br>";
-    // echo "Genres: ";
-    // foreach ($pulpFictionGenres as $key => $genre) {
+                    echo "<strong>Title</strong>: " . $movie->title . "</br>";
+                    echo "<b>Director</b>: " . $movie->director . "</br>";
+                    echo "<b>Year of publication</b>: " . $movie->year . "</br>";
+                    echo "<b>Genres</b>: ";
 
-    //     $last_key = array_key_last($pulpFictionGenres);
+                    foreach($genres as $genreKey => $genre){
+                        $genreLastKey = array_key_last($genres);
 
-    //     if ($key == $last_key) {
-    //         echo $genre;
-    //     } else echo "$genre, ";
-    // }
+                        if ($genreKey == $genreLastKey) {
+                            echo $genre;
+                        } else echo $genre . ", ";
+                    }
 
-    ?>
+                    echo "</br>";
+                    echo "<b>Budget</b>: " . $movie->getBudget() . "</br>";
+                    echo "<b>World wide box office</b>: " . $movie->getWorldWide() . "</br>";
+
+                echo "</li>";
+                
+                if ($movieKey != $movieLastKey) echo "<hr>";
+            }
+
+        ?>
+    </ul>
 
 </body>
 
