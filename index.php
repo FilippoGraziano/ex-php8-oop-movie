@@ -69,16 +69,16 @@ $godfatherGenres = $godfather->genresNames->getGenresNames();
 $pulpFiction = new Movie("Pulp Fiction", 1994, new Genres(["Crime", "Thriller"]), "Quentin Tarantino", "$8,500,000", "$213,900,000");
 $pulpFictionGenres = $pulpFiction->genresNames->getGenresNames();
 
-// $inception = new Movie("Inception", 2010, new Genres(["Sci-Fi", "Action"]), "Christopher Nolan");
-// $inceptionGenres = $inception->genresNames->getGenresNames();
+$inception = new Movie("Inception", 2010, new Genres(["Sci-Fi", "Action"]), "Christopher Nolan", "$160,000,000", "$839,000,000");
+$inceptionGenres = $inception->genresNames->getGenresNames();
 
-// $lifeIsBeutiful = new Movie("La vita è bella", 1997, new Genres(["Comedy-Drama", "Historical"]), "Roberto Benigni");
-// $lifeIsBeutifulGenres = $lifeIsBeutiful->genresNames->getGenresNames();
+$lifeIsBeutiful = new Movie("La vita è bella", 1997, new Genres(["Comedy-Drama", "Historical"]), "Roberto Benigni", "$20,000,000", "$229,300,000");
+$lifeIsBeutifulGenres = $lifeIsBeutiful->genresNames->getGenresNames();
 
-// $shining = new Movie("The Shining", 1980, new Genres(["Horro", "Psychological Thriller"]), "Stanley Kubrick");
-// $shiningGenres = $shining->genresNames->getGenresNames();
+$shining = new Movie("The Shining", 1980, new Genres(["Horro", "Psychological Thriller"]), "Stanley Kubrick", "$19,000,000", "$47,300,000");
+$shiningGenres = $shining->genresNames->getGenresNames();
 
-var_dump($godfather)
+var_dump($shining)
 
 ?>
 
